@@ -4,4 +4,11 @@
 
 * {
   margin: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  body {
+    @apply bg-secondary text-gray-200 h-screen;
+  }
 }

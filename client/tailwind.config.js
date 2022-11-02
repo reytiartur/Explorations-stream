@@ -7,13 +7,15 @@ module.exports = {
       'md': '768px',
       'lg': '976px',
       'xl': '1240px',
-      'xxl': '1440px'
+      '2xl': '1440px'
     },
-    colors: {
+
+    extend: {
+      colors: {
       'primary': '#b0126b',
       'secondary': '#2e2e2e'
+      },
     },
-    extend: {},
   },
   plugins: [],
 }
