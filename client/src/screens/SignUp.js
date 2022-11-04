@@ -40,7 +40,7 @@ const SignUp = () => {
     }
 
   return (
-    <div className='w-screen mt-8 md:mt-32'>
+    <div className='mt-52 md:mt-60'>
         <div className='text-gray-200 text-center text-xl'>
             <p>Create your account</p>
             <p>and try our services for</p>
@@ -55,7 +55,7 @@ const SignUp = () => {
         </form>
         <div className='text-gray-200 flex justify-center items-center gap-2 text-lg'>
             <p>Already have an account?</p>
-            <p className='underline underline-offset-2 text-primary md:text-gray-200 cursor-pointer hover:text-primary hover:no-underline' onClick={() => navigate('/login')}>Log in.</p>
+            <p className='underline underline-offset-2 text-primary md:text-gray-200 cursor-pointer hover:text-primary hover:no-underline' onClick={() => navigate('/')}>Log in.</p>
         </div>
     </div>
   )
