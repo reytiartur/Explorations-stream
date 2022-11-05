@@ -10,7 +10,7 @@ function App() {
   const user = useSelector((state) => state.user)
 
   return (
-    <div className="App h-screen">
+    <div className="App">
       <Router>
         <Routes>
           {!user ? (
