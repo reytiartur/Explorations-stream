@@ -5,6 +5,7 @@ import Navigation from './screens/Navigation';
 import { useSelector } from 'react-redux';
 import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
+import VideoPage from './screens/VideoPage';
 
 function App() {
   const user = useSelector((state) => state.user)
@@ -21,6 +22,7 @@ function App() {
           ) : (
             <Route exact path='/' element={<Navigation />}>
               <Route index element={<HomeScreen />} />
+              <Route path='video/:slug' element={<VideoPage />} />
             </Route>)
           }
         </Routes>

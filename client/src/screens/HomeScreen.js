@@ -1,9 +1,12 @@
 import React from 'react'
+import Categories from '../components/Categories'
+import VideoList from './VideoList'
 
 const HomeScreen = () => {
   return (
-    <div className='text-gray-200'>
-      Home
+    <div>
+      <Categories />
+      <VideoList />
     </div>
   )
 }
