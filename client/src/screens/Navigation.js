@@ -4,22 +4,28 @@ import HeaderItem from '../components/HeaderItem'
 import { HomeIcon, StarIcon, BookmarkIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
 import logo from '../assets/logo.png'
 import SearchBar from '../components/SearchBar'
-import { resetSearchInput } from '../utils/videosReducer'
-import { useDispatch } from 'react-redux'
+import { reduceVideos, resetSearchInput, reduceToWatchList } from '../utils/videosReducer'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Navigation = () => {
   const [open, setOpen] = useState(false)
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const initialVideoList = useSelector(state => state.videos.videoList)
 
   const handleNavigate = (link) => {
     navigate(link)
     dispatch(resetSearchInput())
+    dispatch(reduceVideos(initialVideoList))
   }
 
   const handleOpen = () => {
     setOpen(!open)
+  }
+
+  const handleWatchList = () => {
+    dispatch(reduceToWatchList())
   }
   
   return (
@@ -29,7 +35,7 @@ const Navigation = () => {
             <div className='flex w-full gap-x-2 pt-3 justify-evenly sm:w-4/6 md:w-2/5 md:gap-x-3 md:max-w-[305px]'>
                 <HeaderItem title='HOME' Icon={HomeIcon} eventHandler={() => handleNavigate('/')} />
                 <HeaderItem title='TOP RATED' Icon={StarIcon} />
-                <HeaderItem title='YOUR LIST' Icon={BookmarkIcon} />
+                <HeaderItem title='YOUR LIST' Icon={BookmarkIcon} eventHandler={handleWatchList} />
                 <HeaderItem title='SEARCH' Icon={MagnifyingGlassIcon} eventHandler={handleOpen} />
                 <HeaderItem title='ACCOUNT' Icon={UserIcon} />
             </div>
