@@ -37,7 +37,7 @@ const Navigation = () => {
                 <HeaderItem title='TOP RATED' Icon={StarIcon} />
                 <HeaderItem title='YOUR LIST' Icon={BookmarkIcon} eventHandler={handleWatchList} />
                 <HeaderItem title='SEARCH' Icon={MagnifyingGlassIcon} eventHandler={handleOpen} />
-                <HeaderItem title='ACCOUNT' Icon={UserIcon} />
+                <HeaderItem title='ACCOUNT' Icon={UserIcon} eventHandler={() => handleNavigate('/account')} />
             </div>
           {open && (<SearchBar handleBlur={handleOpen} />)}
         </header>

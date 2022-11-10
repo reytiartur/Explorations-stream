@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Input from '../components/Input'
 import Button from '../components/Button'
-import { createUserWithEmail } from '../utils/firebase'
+import { createUserData, createUserWithEmail, setCurrentUser } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
+import { setUser } from '../utils/userReducer'
+import { useDispatch } from 'react-redux'
 
 const SignUp = () => {
 
@@ -16,6 +18,7 @@ const SignUp = () => {
     const [formFields, setFormFields] = useState(defaultFields)
     const { email, userLogin, password, confirmPassword } = formFields;
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const resetFormField = () => {
         setFormFields(defaultFields);
@@ -34,9 +37,14 @@ const SignUp = () => {
             return;
         }
 
-        const { user } = await createUserWithEmail(email, password)
-        console.log(user)            
-        resetFormField()
+        try {
+            const { user } = await createUserWithEmail(email, password)
+            await createUserData(user, { userLogin: userLogin })
+            await setCurrentUser((currentUser) => dispatch(setUser(currentUser)))
+            navigate('/')
+        } catch {
+            resetFormField()
+        }
     }
 
   return (
