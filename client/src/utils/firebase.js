@@ -145,7 +145,8 @@ export const handleCheckOut = async (uid, priceId) => {
             alert("An error occurred:", error.message)
         }
         if(sessionId) {
-            const stripe = await loadStripe('pk_test_51M2EktLSZVoIPYOBKKMTYTcBZPyFCTEM6QdMSWzwGneQD3anFDEHAeTdd0rx5Dox8AA3hNXEQN4KKPNfUClLbzc300PPBDXTlJ')
+            const STRIPE_KEY = process.env.REACT_STRIPE_KEY;
+            const stripe = await loadStripe(STRIPE_KEY)
             stripe.redirectToCheckout({sessionId})
         }
     })
