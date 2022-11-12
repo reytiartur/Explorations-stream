@@ -34,10 +34,24 @@ export const videosSlice = createSlice({
         },
         reduceToWatchList: (state) => {
             state.showVideos = state.videoList.filter(video => state.watchLaterList.some(list => list.id === video.id))
+        },
+        reduceToPopular: (state) => {
+            const topTen = Math.ceil(state.videos.length * 0.1)
+            state.showVideos = state.videoList.sort((a, b) => a.likes < b.likes ? 1 : -1).slice(0, topTen)
+        },
+        reduceToLatest: (state) => {
+            state.showVideos = state.videoList.filter(video => {
+                const diffTime = Math.abs(new Date() - new Date(video.date.replace(/-/g,'/')));
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if(diffDays < 30) {
+                    return true;
+                }
+            })
+            .sort((a, b) => a.date < b.date ? 1 : -1)
         }
     }
 })
 
 
-export const { addToList, deleteFromList, reduceVideos, searchInput, resetSearchInput, setCategory, reduceToWatchList } = videosSlice.actions;
+export const { addToList, deleteFromList, reduceVideos, searchInput, resetSearchInput, setCategory, reduceToWatchList, reduceToPopular, reduceToLatest } = videosSlice.actions;
 export default videosSlice.reducer;

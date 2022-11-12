@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import HeaderItem from '../components/HeaderItem'
 import { HomeIcon, StarIcon, BookmarkIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
 import logo from '../assets/logo.png'
 import SearchBar from '../components/SearchBar'
-import { reduceVideos, resetSearchInput, reduceToWatchList } from '../utils/videosReducer'
+import { reduceVideos, resetSearchInput, reduceToWatchList, reduceToPopular } from '../utils/videosReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Navigation = () => {
@@ -27,6 +27,16 @@ const Navigation = () => {
   const handleWatchList = () => {
     dispatch(reduceToWatchList())
   }
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      handleOpen(false)
+    }, 10)
+  }
+
+  const reducePopular = () => {
+    dispatch(reduceToPopular())
+  }
   
   return (
     <>
@@ -34,12 +44,12 @@ const Navigation = () => {
             <img onClick={() => handleNavigate('/')} className='w-36 h-16 object-cover object-center md:w-40 cursor-pointer' src={logo} alt='logo' />
             <div className='flex w-full gap-x-2 pt-3 justify-evenly sm:w-4/6 md:w-2/5 md:gap-x-3 md:max-w-[305px]'>
                 <HeaderItem title='HOME' Icon={HomeIcon} eventHandler={() => handleNavigate('/')} />
-                <HeaderItem title='TOP RATED' Icon={StarIcon} />
+                <HeaderItem title='POPULAR' Icon={StarIcon} eventHandler={reducePopular} />
                 <HeaderItem title='YOUR LIST' Icon={BookmarkIcon} eventHandler={handleWatchList} />
                 <HeaderItem title='SEARCH' Icon={MagnifyingGlassIcon} eventHandler={handleOpen} />
                 <HeaderItem title='ACCOUNT' Icon={UserIcon} eventHandler={() => handleNavigate('/account')} />
             </div>
-          {open && (<SearchBar handleBlur={handleOpen} />)}
+          {open && (<SearchBar handleBlur={handleBlur} />)}
         </header>
         <Outlet />
     </>

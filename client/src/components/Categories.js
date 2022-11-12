@@ -1,13 +1,17 @@
 import React from 'react'
 import { categories } from '../data'
-import { setCategory } from '../utils/videosReducer'
+import { reduceToLatest, setCategory } from '../utils/videosReducer'
 import { useDispatch } from 'react-redux'
 
 const Categories = () => {
   const dispatch = useDispatch()
 
   const handleChoose = (category) => {
-    dispatch(setCategory(category))
+    if(category === 'latest') {
+      dispatch(reduceToLatest())
+    } else {
+      dispatch(setCategory(category))
+    }
   }
 
   return (
@@ -18,7 +22,7 @@ const Categories = () => {
                 <p key={category} onClick={() => handleChoose(category)} className='cursor-pointer transition duration-100 transform hover:scale-110 active:text-primary'>{category.toUpperCase()}</p>
             ))}
         </div>
-        <div className='w-12 h-full  absolute top-0 right-0 bg-gradient-to-l from-secondary' />
+        <div className='w-12 h-full absolute top-0 right-0 bg-gradient-to-l from-secondary' />
     </nav>
   )
 }
