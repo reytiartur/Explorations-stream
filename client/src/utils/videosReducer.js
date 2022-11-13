@@ -36,7 +36,7 @@ export const videosSlice = createSlice({
             state.showVideos = state.videoList.filter(video => state.watchLaterList.some(list => list.id === video.id))
         },
         reduceToPopular: (state) => {
-            const topTen = Math.ceil(state.videos.length * 0.1)
+            const topTen = Math.ceil(state.videoList.length * 0.1)
             state.showVideos = state.videoList.sort((a, b) => a.likes < b.likes ? 1 : -1).slice(0, topTen)
         },
         reduceToLatest: (state) => {

@@ -17,7 +17,7 @@ const Categories = () => {
   return (
     <nav className='relative'>
         <div className='w-10 h-full absolute top-0 left-0 bg-gradient-to-r from-secondary z-10' />
-        <div className='flex w-screen overflow-x-scroll overflow-y-hidden items-center space-x-10 py-2 md:space-x-20 px-10 md:px-20 whitespace-nowrap md:text-lg scrollbar-hide'>
+        <div className='flex w-screen overflow-x-scroll overflow-y-hidden items-center space-x-10 py-2 md:space-x-20 px-10 md:px-20 whitespace-nowrap md:text-lg'>
             {categories.map(category => (
                 <p key={category} onClick={() => handleChoose(category)} className='cursor-pointer transition duration-100 transform hover:scale-110 active:text-primary'>{category.toUpperCase()}</p>
             ))}

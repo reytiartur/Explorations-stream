@@ -31,7 +31,7 @@ const Navigation = () => {
   const handleBlur = () => {
     setTimeout(() => {
       handleOpen(false)
-    }, 10)
+    }, 100)
   }
 
   const reducePopular = () => {
