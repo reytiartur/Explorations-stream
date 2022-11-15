@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import VideoPreview from '../components/VideoPreview'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchVideos, setInitialVideos } from '../utils/videosReducer'
 
 const VideoList = () => {
   const videosToShow = useSelector(state => state.videos.showVideos)
   const stringToSearch = useSelector(state => state.videos.searchVideo)
+  const status = useSelector(state => state.videos.status)
+  const dispatch = useDispatch()
   const [videos, setVideos] = useState(videosToShow)
+
+  useEffect(() => {
+    if(status === 'idle') {
+      dispatch(fetchVideos())
+    }
+  }, [status])
 
   useEffect(() => {
     const searchedVideos = videosToShow?.filter(video => video.title.toLowerCase().includes(stringToSearch.toLowerCase()))

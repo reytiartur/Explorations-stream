@@ -1,14 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios'
 import { categories } from "../data";
-import { videos } from "../data";
+
+const VIDEOS_API = 'http://localhost:3001/api'
+
+export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
+    try {
+        const response = await axios.get(VIDEOS_API)
+        return response.data;
+    } catch (error) {
+        return error.message
+    }
+})
 
 const initialString = '';
 
 export const videosSlice = createSlice({
     name: 'videos',
     initialState: {
-        videoList: videos,
-        showVideos: videos,
+        videoList: [],
+        showVideos: [],
+        status: 'idle',
         videoCategories: categories,
         watchLaterList: [],
         searchVideo: initialString,
@@ -49,9 +61,23 @@ export const videosSlice = createSlice({
             })
             .sort((a, b) => a.date < b.date ? 1 : -1)
         }
+    },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchVideos.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(fetchVideos.fulfilled, (state, action) => {
+                state.status = 'succeeded'
+                state.showVideos = action.payload;
+                state.videoList = action.payload;
+            })
+            .addCase(fetchVideos.rejected, (state) => {
+                state.status = 'failed'
+            })
     }
 })
 
 
-export const { addToList, deleteFromList, reduceVideos, searchInput, resetSearchInput, setCategory, reduceToWatchList, reduceToPopular, reduceToLatest } = videosSlice.actions;
+export const { setInitialVideos, addToList, deleteFromList, reduceVideos, searchInput, resetSearchInput, setCategory, reduceToWatchList, reduceToPopular, reduceToLatest } = videosSlice.actions;
 export default videosSlice.reducer;
