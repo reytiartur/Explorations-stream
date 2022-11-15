@@ -1,0 +1,86 @@
+[
+    {
+        "title": "Punic wars",
+        "thumbnail": "https://www.mindrevolt.org/images/posts/what-if-carthage-won-the-punic-wars-the-world-we-know-today-would-be-totally-different.jpg",
+        "description": "The Punic Wars was a series of wars between 264 and 146 BC that were fought between Rome and Carthage. The First Punic War broke out on the island of Sicily in 264 BC. It was regarded as the longest and most severely contested war in history by the Ancient Greek historian Polybius. The fighting, which consisted predominantly of naval warfare, largely took place on the waters of the Mediterranean surrounding Sicily.",
+        "category": ["rome"], 
+        "likes": 451,
+        "id": 1,
+        "slug": "punic-wars",
+        "date": "10-22-2022",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "The Peloponnesian war",
+        "thumbnail": "https://assets.sutori.com/user-uploads/image/eafd489c-a9c0-4ccf-ae7a-ab5bfa4c44ed/806b46c106bc955231f08c6cc031da92.jpeg",
+        "description": "The Peloponnesian War was an ancient Greek war fought between Athens and Sparta and their respective allies for the hegemony of the Greek world. The war remained undecided for a long time until the decisive intervention of the Persian Empire in support of Sparta. Led by Lysander, the Spartan fleet built with Persian subsidies finally defeated Athens and started a period of Spartan hegemony over Greece.",
+        "category": ["greece"], 
+        "likes": 1112,
+        "id": 2,
+        "slug": "the-peloponnesian-wars",
+        "date": "08-04-2022",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "The saga of Harald Hardrada",
+        "thumbnail": "https://cdn.mos.cms.futurecdn.net/NSiSKf4HjvWWqj5wQLzgLY-1200-80.jpg",
+        "description": "Harald Sigurdsson, also known as Harald of Norway in the sagas, was King of Norway from 1046 to 1066. Additionally, he unsuccessfully claimed both the Danish throne until 1064 and the English throne in 1066. Before becoming king, Harald had spent around fifteen years in exile as a mercenary and military commander in Kievan Rus and of the Varangian Guard in the Byzantine Empire.",
+        "category": ["nordic"], 
+        "likes": 208,
+        "id": 3,
+        "slug": "the-saga-of-harald-hardrada",
+        "date": "11-05-2022",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "Siege of Stalingrad",
+        "thumbnail": "https://papik.pro/en/uploads/posts/2022-06/1655089326_1-papik-pro-p-war-in-stalingrad-drawing-1.jpg",
+        "description": "The Battle of Stalingrad was a major battle on the Eastern Front of World War II where Nazi Germany and its allies unsuccessfully fought the Soviet Union for control of the city of Stalingrad.",
+        "category": ["WWII"], 
+        "likes": 310,
+        "id": 4,
+        "slug": "siege-of-stalingrad",
+        "date": "01-18-2019",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "the reason behind Crusades",
+        "thumbnail": "https://www.wearethemighty.com/app/uploads/legacy/assets.rbl.ms/17320053/origin.jpg",
+        "description": "The Crusades were a series of religious wars initiated, supported, and sometimes directed by the Latin Church in the medieval period. The best known of these Crusades are those to the Holy Land in the period between 1095 and 1291 that were intended to recover Jerusalem and its surrounding area from Islamic rule.",
+        "category": ["medieval"], 
+        "likes": 101,
+        "id": 5,
+        "slug": "in-the-name-of-god",
+        "date": "03-18-2019",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "Rome - from dawn to dusk",
+        "thumbnail": "https://i.pinimg.com/originals/81/21/51/812151191265cbdac4353d96f1100fc5.jpg",
+        "description": "The history of Roman civilization from the founding of the city of Rome in the 8th century BC to the collapse of the Western Roman Empire in the 5th century AD. It encompasses the Roman Kingdom, Roman Republic and Roman Empire until the fall of the western empire.",
+        "category": ["rome"], 
+        "likes": 641,
+        "id": 6,
+        "slug": "rome-from-dawn-to-dusk",
+        "date": "11-12-2022",
+        "source": "url",
+        "comments": []
+    },
+    {
+        "title": "Ptolemaic dynasty",
+        "thumbnail": "https://cdn.historycollection.com/wp-content/uploads/2016/12/cleopatra-cleopatra-375x250.jpg",
+        "description": "The Ptolemaic dynasty was a Macedonian Greek royal dynasty which ruled the Ptolemaic Kingdom in Ancient Egypt during the Hellenistic period. The Ptolemaic was the last dynasty of ancient Egypt.",
+        "category": ["egypt", "greece"], 
+        "likes": 141,
+        "id": 7,
+        "slug": "ptolemaic-dynasty",
+        "date": "24-12-2020",
+        "source": "url",
+        "comments": []
+    }
+]
