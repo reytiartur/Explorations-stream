@@ -21,7 +21,9 @@ export const createUserWithEmail = async (email, password) => {
     if(!email || !password) return;
 
     try {
-        return await createUserWithEmailAndPassword(auth, email, password)
+        const {user} = await createUserWithEmailAndPassword(auth, email, password)
+        localStorage.setItem('userId', user.uid);
+        return user 
     } catch (error) {
         if(error.code === 'auth/email-already-in-use') {
             alert('Email already in use.')
@@ -57,13 +59,16 @@ export const logInWithEmail = async (email, password) => {
     if(!email || !password) return;
 
     try {
-        return await signInWithEmailAndPassword(auth, email, password)
+        const { user } = await signInWithEmailAndPassword(auth, email, password)
+        localStorage.setItem('userId', user.uid);
+        return user;
     } catch(error) {
         console.log('Log in error!', error.message)
     }
 }
 
 export const logOut = async () => {
+    localStorage.removeItem('userId');
     await signOut(auth)
 }
 

@@ -22,11 +22,13 @@ function App() {
     userChange()
   }, [user?.uid])
 
+  const isLogged = localStorage.getItem('userId') || false;
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          {!user ? (
+          {!isLogged ? (
             <>
               <Route exact path='/' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
