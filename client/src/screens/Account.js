@@ -17,8 +17,8 @@ const Account = () => {
   return (
     <div className='mt-16 px-4 sm:px-8 md:w-[600px] md:px-0 md:mx-auto md:mt-32'>
         <div className="flex flex-col items-center mb-2">
-            <p className='text-xl font-bold'>{user.userLogin}</p>
-            <p className='pt-2'>{user.email}</p>
+            <p className='text-2xl font-bold '>{user?.userLogin}</p>
+            <p className='pt-2 text-xl'>{user?.email}</p>
         </div>
         <Subscriptions />
         <div className="flex justify-center mt-6">
