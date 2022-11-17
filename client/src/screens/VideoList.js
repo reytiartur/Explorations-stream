@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import VideoPreview from '../components/VideoPreview'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchVideos, setInitialVideos } from '../utils/videosReducer'
+import Pagination from '../components/Pagination'
 
 const VideoList = () => {
   const videosToShow = useSelector(state => state.videos.showVideos)
@@ -9,6 +10,8 @@ const VideoList = () => {
   const status = useSelector(state => state.videos.status)
   const dispatch = useDispatch()
   const [videos, setVideos] = useState(videosToShow)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [videosPerPage] = useState(12);
 
   useEffect(() => {
     if(status === 'idle') {
@@ -26,27 +29,37 @@ const VideoList = () => {
   }, [videosToShow])
 
   let content;
-    if(status === 'idle'|| status === 'loading') {
-      content = <div className='flex flex-col items-center justify-center row-span-full col-span-full self-center justify-self-center	animate-pulse mt-40'> 
-                  <div className="animate-spin flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-tr from-primary to-white">
-                    <div className="h-10 w-10 rounded-full bg-secondary"></div>
-                  </div>
-                  <p className='mt-4 font-bold text-xl items-center'>Loading...</p>
+  if(status === 'idle'|| status === 'loading') {
+    content = <div className='flex flex-col items-center justify-center row-span-full col-span-full self-center justify-self-center	animate-pulse mt-40'> 
+                <div className="animate-spin flex items-center justify-center rounded-full w-16 h-16 bg-gradient-to-tr from-primary to-white">
+                  <div className="h-10 w-10 rounded-full bg-secondary"></div>
                 </div>
-    } else if(status === 'succeeded') {
-      content = videos?.length ? videos?.map(video => (
-        <VideoPreview key={video.id} video={video} />
-          )) : (
-            <p className='col-span-full justify-self-center text-2xl text-bold mt-40 text-center'>Nothing has matched your search parameters...</p>
-          )
-    }
+                <p className='mt-4 font-bold text-xl items-center'>Loading...</p>
+              </div>
+  } else if(status === 'succeeded') {
+    content = videos?.length ? videos?.map(video => (
+      <VideoPreview key={video.id} video={video} />
+        )) : (
+          <p className='col-span-full justify-self-center text-2xl text-bold mt-40 text-center'>Nothing has matched your search parameters...</p>
+        )
+  }
 
+  const indexOfLastVideo = currentPage * videosPerPage;
+  const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
 
+  const currentVideos = content.slice(indexOfFirstVideo, 
+    indexOfLastVideo);
+
+  const pages = Math.ceil(content.length / videosPerPage)
   
   return (
-    <div className='w-full h-full flex flex-col px-6 py-6 sm:gap-6 sm:grid sm:grid-cols-1 md:grid-cols-2 md:px-12 md:py-10 md:gap-8 lg:gap-6 lg:px-4 lg:grid-cols-3 xl:px-8 2xl:grid-cols-4 2xl:gap-7 2xl:px-16 3xl:flex 3xl:justify-center 3xl:px-9 3xl:gap-8'>
-        {content}
+    <div>
+      <div className='w-full h-full flex flex-col px-6 py-6 sm:gap-6 sm:grid sm:grid-cols-1 md:grid-cols-2 md:px-12 md:py-10 md:gap-8 lg:gap-6 lg:px-4 lg:grid-cols-3 xl:px-8 2xl:grid-cols-4 2xl:gap-7 2xl:px-16 3xl:flex 3xl:justify-center 3xl:px-9 3xl:gap-8'>
+        {currentVideos}
+      </div>
+      <Pagination pages = {pages} currentPage = {currentPage} setCurrentPage = {setCurrentPage} />
     </div>
+    
   )
 }
 
