@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 import { categories } from "../data";
 
-const VIDEOS_API = 'http://localhost:3001/api'
+const VIDEOS_API = 'https://explorations-stream-hhm8dod6l-reytiartur.vercel.app/api'
 
 export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
     try {
